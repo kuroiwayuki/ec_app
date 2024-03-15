@@ -1,0 +1,17 @@
+<h1>注文確定</h1>
+
+<div>
+  <h2>カート内の商品</h2>
+  <ul>
+    <% @cart_items.each do |item| %>
+      <li>
+        <%= item.product.name %> - 数量: <%= item.quantity %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<%= form_with model: @order, local: true do |form| %>
+  <!-- 注文情報の入力フォーム（住所、支払い方法など） -->
+  <%= form.submit '注文を確定する' %>
+<% end %>

@@ -1,0 +1,12 @@
+<h2>カート</h2>
+
+<ul>
+  <% @cart_items.each do |item| %>
+    <li>
+      <%= item.product.name %> - <%= item.quantity %> - <%= number_to_currency(item.product.price * item.quantity) %>
+        <%= link_to '削除', cart_item_path(item), data: { turbo_method: :delete}, confirm: '本当に削除しますか？'%>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to '注文画面に進む', new_order_path, class: 'button' %>
